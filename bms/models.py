@@ -35,7 +35,7 @@ class Screen(BaseModel):
     name = models.CharField(max_length=50)
     region = models.ForeignKey(Region, on_delete=models.CASCADE)
     theater = models.ForeignKey(Theater, on_delete=models.CASCADE)
-    features = models.ManyToManyField(Feature, through='Feature')
+    features = models.ManyToManyField(Feature)
 
 
 class Movie(BaseModel):
@@ -85,7 +85,7 @@ class ShowSeat(BaseModel):
 
 class ShowSeatType(BaseModel):
     show = models.ForeignKey(Show, on_delete=models.CASCADE)
-    seat_type = models.ForeignKey(SeatType, on_delete=models.CASCADE)
+    seat_type = models.TextField(choices=SeatType)
     price = models.IntegerField()
 
 
