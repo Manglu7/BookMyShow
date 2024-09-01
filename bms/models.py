@@ -102,7 +102,7 @@ class Ticket(BaseModel):
     show_seats = models.ManyToManyField(ShowSeat)
     amount = models.IntegerField()
     booking_status = models.TextField(choices=BookingStatus.choices)
-
+    booking_time = models.DateTimeField(default=timezone.now)
 
 class PaymentMode(models.TextChoices):
     UPI = 'UPI'
