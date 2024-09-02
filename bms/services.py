@@ -48,4 +48,4 @@ class BookShowService:
             return booking
 
         except Exception as e:
-            raise e
+            print(e)
