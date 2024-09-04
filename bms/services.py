@@ -1,12 +1,14 @@
+import random
+
 from django.core.handlers import exception
 from django.utils import timezone
 
-from bms.models import User, Show, ShowSeat, ShowSeatStatus, Ticket
+from bms.models import User, Show, ShowSeat, ShowSeatStatus, Ticket, BookingStatus
 from typing import List
 
 class BookShowService:
 
-    def create_booking(self, user_id: int, show_seat_ids: List[int], show_id: int):
+    def create_booking(self, user_id: int, show_seat_ids: List[int], show_id: int) -> Ticket:
         if len(show_seat_ids) > 10:
             raise ValueError("Show seat id must be less than 10")
         try:
@@ -29,11 +31,11 @@ class BookShowService:
                 show_seat.save()
 
             booking = Ticket(
-                user = user,
-                show = show,
+                user=user,
+                show=show,
                 amount=100,
-                ticket_number=timezone.now(),
-                booking_status='PENDING',
+                ticket_number=random.randint(1, 9999),
+                booking_status=BookingStatus.PENDING,
             )
             booking.save()
 

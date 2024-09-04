@@ -80,11 +80,14 @@ WSGI_APPLICATION = 'BookMyShow.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bmsaug24',
+        'NAME': 'bookmyshow',
         'USER': 'root',
-        'PASSWORD': '<PASSWORD>',
+        'PASSWORD': '@AjaysharmA@1',
         'HOST': '127.0.0.1',
         'PORT': '3306',
+        'TEST': {
+            'MIRROR': 'default'
+        }
     }
 }
 

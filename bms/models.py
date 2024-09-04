@@ -38,6 +38,14 @@ class Screen(BaseModel):
     features = models.ManyToManyField(Feature)
 
 
+class ScreenFeature(BaseModel):
+    screen = models.ForeignKey(Screen, on_delete=models.CASCADE)
+    feature = models.ForeignKey(Feature, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = (('screen', 'feature'),)
+
+
 class Movie(BaseModel):
     title = models.CharField(max_length=50)
     release_date = models.DateField()
@@ -68,6 +76,7 @@ class Seat(BaseModel):
     col_number = models.IntegerField()
     number = models.IntegerField()
     seat_type = models.TextField(choices=SeatType.choices)
+    screen = models.ForeignKey(Screen, on_delete=models.CASCADE, default=None)
 
 
 class ShowSeatStatus(models.TextChoices):
@@ -101,8 +110,9 @@ class Ticket(BaseModel):
     show = models.ForeignKey(Show, on_delete=models.CASCADE)
     show_seats = models.ManyToManyField(ShowSeat)
     amount = models.IntegerField()
-    booking_status = models.TextField(choices=BookingStatus.choices)
+    booking_status = models.CharField(max_length=100, choices=BookingStatus.choices)
     booking_time = models.DateTimeField(default=timezone.now)
+
 
 class PaymentMode(models.TextChoices):
     UPI = 'UPI'
@@ -122,5 +132,3 @@ class Payment(BaseModel):
     mode = models.TextField(choices=PaymentMode.choices)
     status = models.TextField(choices=PaymentStatus.choices)
     ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)
-
-
