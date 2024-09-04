@@ -24,7 +24,7 @@ class BookingViewSet(viewsets.ViewSet):
                 show_id=req.validated_data['show_id'],
             )
             data = {
-                'booking_id': booking.booking_id,
+                'booking_id': booking.id,
                 'status': booking.booking_status,
             }
             return BookingResponseSerializer(data=data)
