@@ -15,7 +15,7 @@ class BookingViewSet(viewsets.ViewSet):
         super().__init__(**kwargs)
 
     def create_booking(self, request):
-        req = BookingRequestSerializer(request.data)
+        req = BookingRequestSerializer(data=request.data)
         req.is_valid(raise_exception=True)
         try:
             booking = self.service.create_booking(
@@ -27,7 +27,7 @@ class BookingViewSet(viewsets.ViewSet):
                 'booking_id': booking.booking_id,
                 'status': booking.booking_status,
             }
-            return BookingResponseSerializer(data)
+            return BookingResponseSerializer(data=data)
         except Exception as e:
             print(e)
             return BookingResponseSerializer({'status': 'ERROR'})

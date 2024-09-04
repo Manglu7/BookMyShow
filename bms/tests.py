@@ -44,7 +44,7 @@ class BookingTestCase(TransactionTestCase):
         self.seat1, created = Seat.objects.get_or_create(
             row_number=1,
             col_number=1,
-            number="A1",
+            number="11",
             seat_type=SeatType.PLATINUM,
             screen=self.screen
         )
@@ -52,7 +52,7 @@ class BookingTestCase(TransactionTestCase):
         self.seat2, created = Seat.objects.get_or_create(
             row_number=1,
             col_number=2,
-            number="A2",
+            number="12",
             seat_type=SeatType.PLATINUM,
             screen=self.screen
         )
