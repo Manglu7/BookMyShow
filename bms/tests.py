@@ -21,27 +21,32 @@ class BookingTestCase(TransactionTestCase):
         )
 
         self.movie, created = Movie.objects.get_or_create(
+            id=1,
             title='asd',
             release_date='2024-07-27',
             runtime=200
         )
 
         self.region, created = Region.objects.get_or_create(
+            id=1,
             name='Delhi'
         )
 
         self.theater, created = Theater.objects.get_or_create(
+            id=1,
             name='inox',
             region=self.region
         )
 
         self.screen, created = Screen.objects.get_or_create(
+            id=1,
             region=self.region,
             name='audi1',
             theater=self.theater
         )
 
         self.seat1, created = Seat.objects.get_or_create(
+            id=1,
             row_number=1,
             col_number=1,
             number="11",
@@ -50,6 +55,7 @@ class BookingTestCase(TransactionTestCase):
         )
 
         self.seat2, created = Seat.objects.get_or_create(
+            id=2,
             row_number=1,
             col_number=2,
             number="12",
@@ -58,10 +64,12 @@ class BookingTestCase(TransactionTestCase):
         )
 
         self.feature, created = Feature.objects.get_or_create(
+            id=1,
             name='2D'
         )
 
         self.show, created = Show.objects.get_or_create(
+            id=1,
             movie=self.movie,
             start_time=timezone.now(),
             end_time=timezone.now() + timezone.timedelta(hours=2),
@@ -70,18 +78,21 @@ class BookingTestCase(TransactionTestCase):
         )
 
         self.show_seat1, created = ShowSeat.objects.get_or_create(
+            id=1,
             show=self.show,
             seat=self.seat1,
             show_seat_status=ShowSeatStatus.AVAILABLE
         )
 
         self.show_seat2, created = ShowSeat.objects.get_or_create(
+            id=2,
             show=self.show,
             seat=self.seat2,
             show_seat_status=ShowSeatStatus.AVAILABLE
         )
 
         self.show_seat_type, created = ShowSeatType.objects.get_or_create(
+            id=1,
             show=self.show,
             seat_type=SeatType.PLATINUM,
             price=250
