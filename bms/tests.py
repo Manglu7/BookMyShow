@@ -41,12 +41,18 @@ class BookingTestCase(TransactionTestCase):
             region=self.region
         )
 
+        self.feature, created = Feature.objects.get_or_create(
+            name='2D'
+        )
+
         self.screen, created = Screen.objects.get_or_create(
 
             region=self.region,
             name='audi1',
             theater=self.theater
         )
+
+        self.screen.features.add(self.feature)
 
         self.seat1, created = Seat.objects.get_or_create(
 
@@ -66,17 +72,12 @@ class BookingTestCase(TransactionTestCase):
             screen=self.screen
         )
 
-        self.feature, created = Feature.objects.get_or_create(
-
-            name='2D'
-        )
 
         self.naive_datetime = datetime(2024, 9, 10, 7, 54, 0)
 
         self.aware_datetime = timezone.make_aware(self.naive_datetime, timezone.get_current_timezone())
 
         self.show, created = Show.objects.get_or_create(
-
             movie=self.movie,
             start_time=self.aware_datetime,
             end_time=self.aware_datetime + timedelta(hours=2),
