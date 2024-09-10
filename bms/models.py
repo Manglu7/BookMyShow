@@ -38,14 +38,6 @@ class Screen(BaseModel):
     features = models.ManyToManyField(Feature)
 
 
-class ScreenFeature(BaseModel):
-    screen = models.ForeignKey(Screen, on_delete=models.CASCADE)
-    feature = models.ForeignKey(Feature, on_delete=models.CASCADE)
-
-    class Meta:
-        unique_together = (('screen', 'feature'),)
-
-
 class Movie(BaseModel):
     title = models.CharField(max_length=50)
     release_date = models.DateField()
