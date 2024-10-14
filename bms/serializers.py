@@ -2,6 +2,12 @@ from rest_framework import serializers
 
 from bms.models import BookingStatus
 
+from rest_framework_simplejwt.serializers import TokenObtainSerializer
+
+class CustomTokenObtainSerializer(TokenObtainSerializer):
+
+
+
 
 class BookingRequestSerializer(serializers.Serializer):
     user_id = serializers.IntegerField()
