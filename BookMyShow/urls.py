@@ -21,7 +21,7 @@ from oauth2_provider.views import TokenView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('bms.urls')),
+    path('', include('UserService.urls')),
     path('o/', include('oauth2_provider.urls')),
     path('o/token/', csrf_exempt(TokenView.as_view())),
 ]
