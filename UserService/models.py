@@ -7,7 +7,7 @@ from django.contrib.auth.models import PermissionsMixin
 from django.db import models
 from django.utils import timezone
 
-from bms.models import BaseModel
+from bms import BaseModel
 
 
 # Create your models here.

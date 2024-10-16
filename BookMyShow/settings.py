@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bms',
+    'UserService',
     'rest_framework',
     'rest_framework_simplejwt',
     'oauth2_provider',

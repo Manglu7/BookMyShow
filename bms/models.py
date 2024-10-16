@@ -5,6 +5,8 @@ from django.db import models
 
 from django.utils import timezone
 
+from UserService.models import User
+
 
 class BaseModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
